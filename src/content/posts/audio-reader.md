@@ -6,7 +6,7 @@ tags: [Example, Audio Reader]
 series: media-embeds
 seriesOrder: 2
 category: Examples
-draft: false
+draft: true
 ---
 
 These short Japanese voice fragments feel as though they were picked up from the edge of an anime scene: a teasing call, a bright greeting, a tiny laugh, and a few lines with no clear origin. They are mood samples rather than dialogue transcripts, so let the sound carry the meaning.

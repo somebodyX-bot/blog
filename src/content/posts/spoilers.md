@@ -5,7 +5,7 @@ description: Hide inline answers while keeping spoiler content accessible in Shi
 tags: [Demo, Markdown, Accessibility, Shirone]
 category: Guides
 lang: en
-draft: false
+draft: true
 ---
 
 Spoilers conceal a short answer or plot detail without removing it from the document. Hover, focus, or activate the native control to reveal the content.

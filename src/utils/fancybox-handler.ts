@@ -8,6 +8,7 @@ import {
 	type FancyboxConfig,
 	getDefaultFancyboxConfig,
 } from "./fancybox-config";
+import "../styles/fancybox-custom.css";
 
 // Fancybox 模块类型
 // biome-ignore lint/suspicious/noExplicitAny: Fancybox 模块动态加载，无精确类型
@@ -108,12 +109,6 @@ export class FancyboxHandler {
 		const mod = await import("@fancyapps/ui");
 		this.Fancybox = mod.Fancybox;
 		await import("@fancyapps/ui/dist/fancybox/fancybox.css");
-		try {
-			await import("../styles/fancybox-custom.css");
-		} catch {
-			// 该样式表小于 4 KB 时会被 Astro 内联进页面、不会单独产出文件，
-			// 但 Vite 仍会尝试预加载它并 404；此时样式已经生效，忽略即可。
-		}
 	}
 
 	/**

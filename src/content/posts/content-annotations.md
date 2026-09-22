@@ -5,7 +5,7 @@ description: Add compact, accessible supporting notes to Shirone articles withou
 tags: [Demo, Markdown, Annotation, Shirone]
 category: Guides
 lang: en
-draft: false
+draft: true
 ---
 
 Content annotations keep supporting context close to a sentence without placing it directly in the reading flow. Activate the small note marker to reveal its content.

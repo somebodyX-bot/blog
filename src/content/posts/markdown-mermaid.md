@@ -5,7 +5,7 @@ description: A gallery of Mermaid diagrams for processes, interactions, data mod
 tags: [Demo, Example, Markdown, Mermaid]
 category: Examples
 lang: en
-draft: false
+draft: true
 ---
 
 Mermaid turns text descriptions in Markdown into diagrams. The examples below use Shirone's content workflow to demonstrate diagram types commonly used in technical articles and project notes.

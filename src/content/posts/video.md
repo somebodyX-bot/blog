@@ -6,7 +6,7 @@ tags: [Example, Video]
 series: media-embeds
 seriesOrder: 1
 category: Examples
-draft: false
+draft: true
 ---
 
 Just copy the embed code from YouTube or other platforms, and paste it in the markdown file.

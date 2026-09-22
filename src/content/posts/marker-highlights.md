@@ -5,7 +5,7 @@ description: Highlight key phrases with token-driven marker syntax in Shirone Ma
 tags: [Demo, Markdown, Typography, Shirone]
 category: Guides
 lang: en
-draft: false
+draft: true
 ---
 
 Marker highlights bring attention to a specific phrase without turning the surrounding paragraph into a separate component. They render as native `<mark>` elements during the build and inherit the active M3E color system.

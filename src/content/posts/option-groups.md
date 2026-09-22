@@ -5,7 +5,7 @@ description: Present related Markdown alternatives in compact, synchronized M3E 
 tags: [Demo, Markdown, Tabs, Shirone]
 category: Guides
 lang: en
-draft: false
+draft: true
 ---
 
 Option groups keep equivalent instructions together without repeating the surrounding explanation. Each option accepts full block Markdown, while the selected value can synchronize with another group on the same page.

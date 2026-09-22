@@ -5,7 +5,7 @@ description: Present notes, warnings, and optional details with Shirone's M3E Ma
 tags: [Demo, Markdown, Admonition, Shirone]
 category: Guides
 lang: en
-draft: false
+draft: true
 ---
 
 Admonitions keep supporting information visually distinct while preserving the article's reading flow. Every form is rendered on the server and uses the same compact M3E component.
