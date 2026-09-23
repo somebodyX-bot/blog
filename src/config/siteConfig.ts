@@ -58,10 +58,10 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 		// 数组顺序就是轮播顺序；只需要静态 Banner 时，每组保留一张图片即可。
 		src: {
 			desktop: [
-				"/images/albums/CG/233.jpeg",
-				"/images/albums/CG/p3d82h0b.png",
-				"/images/albums/CG/1742908162308.jpg",
-				"/images/albums/CG/微信图片_20241116110852.jpg",
+				"/images/albums/CG/233.webp",
+				"/images/albums/CG/p3d82h0b.webp",
+				"/images/albums/CG/1742908162308.webp",
+				"/images/albums/CG/微信图片_20241116110852.webp",
 			],
 			mobile: [
 				"/assets/mobile-banner/1.webp",

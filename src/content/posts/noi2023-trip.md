@@ -166,7 +166,7 @@ day1 前一天晚上颓，想玩桌上足球，一开始跟 liyiwen 两个人在
 
 > 知道博客背景图的也可以qwq
 
-![](/images/posts/noi2023-trip/6rl81kz7.png)
+![](/images/posts/noi2023-trip/6rl81kz7.webp)
 
 ## 2023.7.26
 
