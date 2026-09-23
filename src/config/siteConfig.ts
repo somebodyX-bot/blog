@@ -10,8 +10,8 @@ import { withUserConfig } from "../utils/config-overlay.ts";
  * 类型见 src/types/config.ts。
  */
 export const siteConfig: SiteConfig = withUserConfig("site", {
-	site: "https://somebodyx.github.io/",
-	base: "/",
+	site: "https://somebodyx-bot.github.io",
+	base: "/blog/",
 	title: "somebodyX's Blog",
 	subtitle: "",
 	// 电脑端顶栏标题与导航内容区域："left" 左对齐，"center" 居中。

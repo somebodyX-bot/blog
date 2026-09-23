@@ -23,6 +23,14 @@ async function render(markdown) {
 
 const IMAGE = "https://example.invalid/image.webp";
 
+test("public Markdown images use the configured site base", async () => {
+	const html = await render("![](/images/posts/example.png)");
+	assert.match(html, /src="\/blog\/images\/posts\/example\.png"/);
+	const alreadyPrefixed = await render("![](/blog/images/posts/example.png)");
+	assert.match(alreadyPrefixed, /src="\/blog\/images\/posts\/example\.png"/);
+	assert.doesNotMatch(alreadyPrefixed, /\/blog\/blog\//);
+});
+
 test("parses the w-N% width token out of alt text", () => {
 	assert.deepEqual(parseMarkdownImageAlt("A demo image w-50%"), {
 		alt: "A demo image",

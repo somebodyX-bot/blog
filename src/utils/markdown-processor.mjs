@@ -171,6 +171,7 @@ export const siteRehypePlugins = [
 		rehypeMarkdownImages,
 		{
 			noReferrerDomains: siteConfig.imageOptimization?.noReferrerDomains ?? [],
+			base: siteConfig.base,
 		},
 	],
 	rehypeResponsiveTables,

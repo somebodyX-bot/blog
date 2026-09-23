@@ -112,6 +112,48 @@ function appendStyle(current, declaration) {
 	return `${style.replace(/;?$/, ";")} ${declaration}`;
 }
 
+/**
+ * 为 public 目录中的绝对图片路径添加站点 base。
+ *
+ * 例如：
+ * base = "/blog/"
+ *
+ * /images/a.png      -> /blog/images/a.png
+ * /blog/images/a.png -> /blog/images/a.png
+ *
+ * 远程 URL、相对路径保持不变。
+ */
+function applySiteBase(src, base = "/") {
+	if (
+		typeof src !== "string" ||
+		!src.startsWith("/") ||
+		src.startsWith("//")
+	) {
+		return src;
+	}
+
+	const normalizedBase = String(base).replace(/^\/+|\/+$/g, "");
+
+	// 网站部署在域名根目录时，不需要添加前缀
+	if (!normalizedBase) {
+		return src;
+	}
+
+	const prefix = `/${normalizedBase}`;
+
+	// 避免重复添加 base
+	if (
+		src === prefix ||
+		src.startsWith(`${prefix}/`) ||
+		src.startsWith(`${prefix}?`) ||
+		src.startsWith(`${prefix}#`)
+	) {
+		return src;
+	}
+
+	return `${prefix}${src}`;
+}
+
 function createFigure(image, title) {
 	return {
 		type: "element",
@@ -146,11 +188,21 @@ function onlyImageChild(node) {
 		: null;
 }
 
-async function readImageDimensions(src, filePath) {
+async function readImageDimensions(src, filePath, base = "/") {
 	if (!src || /^(?:https?:|data:|\/\/)/i.test(src)) return undefined;
 	const candidates = [];
 	if (src.startsWith("/")) {
-		candidates.push(path.join(process.cwd(), "public", src.slice(1)));
+	const normalizedBase = String(base).replace(/^\/+|\/+$/g, "");
+	const prefix = normalizedBase ? `/${normalizedBase}` : "";
+
+	const localSrc =
+		prefix && src.startsWith(`${prefix}/`)
+			? src.slice(prefix.length)
+			: src;
+
+	candidates.push(
+		path.join(process.cwd(), "public", localSrc.slice(1)),
+	);
 	} else if (filePath) {
 		candidates.push(path.resolve(path.dirname(filePath), src));
 	}
@@ -172,13 +224,23 @@ async function enhanceImage(image, ancestors, allowFigure, options, filePath) {
 	image.properties ??= {};
 	const properties = image.properties;
 	// 零额外负担：所有正文图片统一惰性加载与异步解码
+
+	// 为 public 图片添加 GitHub Pages 的 base 前缀
+	if (typeof properties.src === "string") {
+		properties.src = applySiteBase(
+			properties.src,
+			options.base,
+		);
+	}
+
 	properties.loading ??= "lazy";
 	properties.decoding ??= "async";
 	if (properties.width == null || properties.height == null) {
 		const dimensions = await readImageDimensions(
-			String(properties.src ?? ""),
-			filePath,
-		);
+		String(properties.src ?? ""),
+		filePath,
+		options.base,
+);
 		if (dimensions) {
 			properties.width ??= dimensions.width;
 			properties.height ??= dimensions.height;
@@ -291,6 +353,10 @@ export function rehypeMarkdownImages(options = {}) {
 		noReferrerDomains: Array.isArray(options.noReferrerDomains)
 			? options.noReferrerDomains
 			: [],
+
+		base: typeof options.base === "string"
+			? options.base
+			: "/",
 	};
 
 	return async (tree, file) => {
