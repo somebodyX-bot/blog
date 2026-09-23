@@ -141,13 +141,17 @@ const defaultNavBarConfig: NavBarConfig = {
 	links: [
 		LinkPresets.Home,
 		LinkPresets.Archive,
+		LinkPresets.Games,
+		LinkPresets.Anime,
 		{
 			name: "我的",
 			icon: "material-symbols:person-outline-rounded",
 			children: [
-				LinkPresets.Anime,
-				{ ...LinkPresets.Moments, name: "日记" },
+				LinkPresets.About,
+				LinkPresets.Series,
+				LinkPresets.Moments,
 				LinkPresets.Albums,
+				LinkPresets.Compass,
 			],
 		},
 	],

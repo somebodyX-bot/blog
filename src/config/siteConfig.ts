@@ -10,7 +10,7 @@ import { withUserConfig } from "../utils/config-overlay.ts";
  * 类型见 src/types/config.ts。
  */
 export const siteConfig: SiteConfig = withUserConfig("site", {
-	site: "https://somebodyx.blog.github.io/",
+	site: "https://somebodyx.github.io/",
 	base: "/",
 	title: "somebodyX's Blog",
 	subtitle: "",
@@ -46,10 +46,10 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 	},
 	// 页面背景纹理系统配置（5 大精美预设 + 零开销 HCT 动态取色）
 	texture: {
-		enable: false, // 旧站未启用背景纹理
-		defaultPreset: "none", // 默认纹理预设："none" | "starlight" | "cyber-dots" | "topography" | "geometric" | "sakura"
+		enable: true, // 旧站未启用背景纹理
+		defaultPreset: "starlight", // 默认纹理预设："none" | "starlight" | "cyber-dots" | "topography" | "geometric" | "sakura"
 		defaultOpacity: 0.12, // 默认纹理浓度 (0.05 ~ 0.25)
-		allowMotion: false, // 是否允许背景微动效（开启 reduced-motion 时自动静止）
+		allowMotion: true, // 是否允许背景微动效（开启 reduced-motion 时自动静止）
 	},
 	banner: {
 		// 推荐将图片放入 src/assets，并填写相对 src 的路径，以启用构建期 AVIF/WebP 响应式优化。

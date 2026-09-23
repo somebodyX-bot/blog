@@ -9,5 +9,21 @@ export const profileConfig: ProfileConfig = withUserConfig("profile", {
 	avatar: "assets/images/avatar.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "somebodyX",
 	bio: "大本钟邮局快递员",
-	links: [],
+	links: [
+		{
+    		name: "Bilibili",
+    		icon: "fa6-brands:bilibili",
+    		url: "https://space.bilibili.com/1966238501",
+    	},
+		{
+      		name: "GitHub",
+      		icon: "fa6-brands:github",
+      		url: "https://github.com/somebodyX-bot",
+    	},
+		{
+			name: "Email",
+			icon: "material-symbols:mail-outline-rounded",
+			url: "mailto:3867642961@qq.com"
+		},
+	],
 });
