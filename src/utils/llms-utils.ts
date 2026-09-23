@@ -1,6 +1,6 @@
 import type { CollectionEntry } from "astro:content";
-import { getPostUrl } from "./url-utils.ts";
 import type { LlmsConfig, LlmsCustomLink } from "@/types/llmsConfig";
+import { getPostUrl, url as withSiteBase } from "./url-utils.ts";
 
 const CODE_BLOCK_RE =
 	/(?:^|\n)(?<marker>\s*(?:`{3,}|~{3,}))([\s\w-]*)\n[\s\S]*?\n\k<marker>(?:\n|$)/g;
@@ -108,9 +108,7 @@ export function toAbsoluteUrl(url: string, baseUrl: string): string {
 	if (url.startsWith("http://") || url.startsWith("https://")) {
 		return url;
 	}
-	const cleanBase = baseUrl.replace(/\/$/, "");
-	const cleanPath = url.startsWith("/") ? url : `/${url}`;
-	return `${cleanBase}${cleanPath}`;
+	return new URL(withSiteBase(url), baseUrl).href;
 }
 
 export interface GenerateLlmsTxtOptions {

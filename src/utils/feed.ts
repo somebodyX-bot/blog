@@ -3,7 +3,7 @@ import { i18n } from "@i18n/translation";
 import { getPublishedInstant, getUpdatedInstant } from "@utils/content-date";
 import { getSortedPosts } from "@utils/content-utils";
 import { isEncryptedPost } from "@utils/post-encryption";
-import { getPostUrl } from "@utils/url-utils";
+import { getPostUrl, toAbsoluteUrl } from "@utils/url-utils";
 import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
 
@@ -79,7 +79,10 @@ export async function getFeedPosts(site: URL): Promise<FeedPostItem[]> {
 			const cleanedContent = stripInvalidXmlChars(contentToRender);
 			contentHtml = sanitizeHtml(parser.render(cleanedContent), {
 				allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-			});
+			}).replace(
+				/\b(src|href)="(\/(?!\/)[^"]*)"/g,
+				(_match, attr, path) => `${attr}="${toAbsoluteUrl(path, site)}"`,
+			);
 		}
 
 		const postUrl = new URL(getPostUrl(post), site).href;
