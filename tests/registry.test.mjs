@@ -7,8 +7,10 @@ import { pathToFileURL } from "node:url";
 import { resolvePaths } from "../src/integration/paths.ts";
 import {
 	buildOverrideRegistry,
+	createOverlayTargets,
 	findOrphanUserFiles,
 	overrideKey,
+	resolveOverride,
 } from "../src/integration/registry.ts";
 
 /** A package-mode layout: theme checkout + a user's site beside it. */
@@ -138,4 +140,10 @@ test("barrel files stay owned by the package at any depth", () => {
 		"nested barrel must not be overridable",
 	);
 	assert.equal(overrides.has(cardKey), true, "a normal component still is");
+	const targets = createOverlayTargets(paths);
+	assert.equal(
+		resolveOverride(targets, join(themeRoot, "src", "components", "atoms", "index.ts")),
+		null,
+		"direct lookup must also leave nested barrels with the package",
+	);
 });

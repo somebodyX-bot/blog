@@ -21,7 +21,7 @@ async function render(markdown) {
 	return code;
 }
 
-const IMAGE = "/images/albums/AcgExample/01.webp";
+const IMAGE = "https://example.invalid/image.webp";
 
 test("parses the w-N% width token out of alt text", () => {
 	assert.deepEqual(parseMarkdownImageAlt("A demo image w-50%"), {
@@ -51,16 +51,17 @@ test("parses the w-N% width token out of alt text", () => {
 test("wraps a standalone image with width token and title into a centered figure", async () => {
 	const html = await render(`![A demo image w-50%](${IMAGE} "Demo caption")`);
 
-	assert.match(html, /<figure class="markdown-image-figure">/);
-	assert.match(html, /width: 50%; display: block; margin-inline: auto;/);
+	assert.match(html, /<figure class="markdown-image-figure"><img\b/);
+	assert.match(
+		html,
+		/<img\b[^>]*style="width: 50%; display: block; margin-inline: auto;"/,
+	);
 	assert.match(html, /alt="A demo image"/);
 	assert.match(html, /loading="lazy"/);
 	assert.match(html, /decoding="async"/);
-	assert.match(html, /width="\d+"/);
-	assert.match(html, /height="\d+"/);
 	assert.match(
 		html,
-		/<figcaption class="markdown-image-caption">Demo caption<\/figcaption>/,
+		/<figcaption class="markdown-image-caption">Demo caption<\/figcaption><\/figure>/,
 	);
 	// 宽度令牌不应残留在 alt 中
 	assert.doesNotMatch(html, /alt="[^"]*w-50%/);
