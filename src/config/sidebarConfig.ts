@@ -44,7 +44,7 @@ export const sidebarConfig: SidebarConfig = withUserConfig("sidebar", {
 		{
 			type: "categories",
 			enable: true,
-			slot: "sticky",
+			slot: "top",
 			column: "secondary",
 			collapseAfter: 5,
 		},

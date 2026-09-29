@@ -17,36 +17,55 @@ export const gamesConfig: GamesConfig = withUserConfig("games", {
 	title: "$t:games",
 	description: "$t:gamesBanner",
 	categories: [
-		{
-			key: "open-world",
-			label: "Open World",
-			icon: "material-symbols:explore-outline-rounded",
-			description: "Open-world adventures",
-		},
-		{
-			key: "sandbox",
-			label: "Sandbox",
-			icon: "material-symbols:widgets-rounded",
-			description: "Building, crafting & creative worlds",
-		},
-		{
-			key: "rpg",
-			label: "RPG",
-			icon: "material-symbols:shield-outline-rounded",
-			description: "Role-playing stories & builds",
-		},
-		{
-			key: "action",
-			label: "Action",
-			icon: "material-symbols:swords-outline-rounded",
-			description: "Action, fighting & shooters",
-		},
-		{
-			key: "casual",
-			label: "Casual",
-			icon: "material-symbols:extension-outline-rounded",
-			description: "Cozy, casual & party games",
-		},
-	],
+  {
+    key: "visual-novel",
+    label: "视觉小说",
+    icon: "material-symbols:menu-book-rounded",
+    description: "AVG",
+  },
+  {
+    key: "rpg",
+    label: "RPG",
+    icon: "material-symbols:swords-rounded",
+    description: "RPG",
+  },
+  {
+    key: "strategy",
+    label: "策略",
+    icon: "material-symbols:strategy-rounded",
+    description: "策略与塔防",
+  },
+  {
+    key: "simulation",
+    label: "模拟经营",
+    icon: "material-symbols:storefront-rounded",
+    description: "模拟经营",
+  },
+  {
+    key: "adventure",
+    label: "冒险",
+    icon: "material-symbols:explore-rounded",
+    description: "剧情冒险",
+  },
+  {
+    key: "puzzle",
+    label: "解谜",
+    icon: "material-symbols:extension-rounded",
+    description: "推理解谜",
+  },
+  {
+    key: "action",
+    label: "动作",
+    icon: "material-symbols:sports-esports-rounded",
+    description: "动作类",
+  },
+  {
+    key: "casual",
+    label: "休闲",
+    icon: "material-symbols:videogame-asset-rounded",
+    description: "休闲",
+  },
+],
+	
 	// disabledIds: [],
 });

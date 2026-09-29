@@ -22,13 +22,14 @@ export interface SiteStats {
 	series: number;
 	/** 全部文章 remark 字数之和 */
 	words: number;
-	/** 运行天数：以最早一篇文章的发布日为起点（无文章则 0） */
+	/** 运行天数：以 2026 年 9 月 22 日为起点 */
 	days: number;
 	/** 最近更新：全站最新一篇的发布/更新日（ISO 字符串；无文章为 null） */
 	lastActivity: string | null;
 }
 
 const DAY_MS = 86_400_000;
+const SITE_START_TIME = new Date("2026-09-22T00:00:00+08:00").getTime();
 
 let cache: SiteStats | null = null;
 
@@ -44,15 +45,13 @@ export async function getSiteStats(): Promise<SiteStats> {
 		seriesConfig.enable ? getSeriesCatalog() : Promise.resolve(null),
 	]);
 
-	// 总字数、最早发布日与最近更新日来自同一批文章，一次遍历
+	// 总字数与最近更新日来自同一批文章，一次遍历
 	let words = 0;
-	let earliest = Number.POSITIVE_INFINITY;
 	let latestActivity = 0;
 	for (const post of posts) {
 		const { remarkPluginFrontmatter } = await render(post);
 		words += remarkPluginFrontmatter.words ?? 0;
 		const published = new Date(post.data.published).getTime();
-		if (published < earliest) earliest = published;
 		const updated = post.data.updated
 			? new Date(post.data.updated).getTime()
 			: 0;
@@ -67,9 +66,7 @@ export async function getSiteStats(): Promise<SiteStats> {
 		/** 系列实体数（功能关闭时为 0，SiteStats 不产出该行） */
 		series: seriesCatalog?.size ?? 0,
 		words,
-		days: Number.isFinite(earliest)
-			? Math.max(0, Math.floor((Date.now() - earliest) / DAY_MS))
-			: 0,
+		days: Math.max(0, Math.floor((Date.now() - SITE_START_TIME) / DAY_MS)),
 		lastActivity:
 			latestActivity > 0 ? new Date(latestActivity).toISOString() : null,
 	};

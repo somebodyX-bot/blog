@@ -25,7 +25,7 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 		wallpaperMode: true, // 是否展示页面背景（纯色/横幅）切换
 		layoutMode: true, // 是否展示文章列表布局（列表/网格）切换
 		reduceMotion: true, // 是否展示减少动效切换
-		texture: false, // 旧站未使用背景纹理，只保留横幅背景切换
+		texture: true, // 旧站未使用背景纹理，只保留横幅背景切换
 	},
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	// IANA time zone for precise post and moment timestamps. It is independent of lang.
@@ -61,13 +61,13 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 				"/images/albums/CG/233.webp",
 				"/images/albums/CG/p3d82h0b.webp",
 				"/images/albums/CG/1742908162308.webp",
-				"/images/albums/CG/微信图片_20241116110852.webp",
+				"/images/albums/CG/1742908827896.webp",
 			],
 			mobile: [
-				"/assets/mobile-banner/1.webp",
-				"/assets/mobile-banner/2.webp",
-				"/assets/mobile-banner/3.webp",
-				"/assets/mobile-banner/4.webp",
+				"/assets/mobile-banner/6.webp",
+				"/assets/mobile-banner/7.webp",
+				"/assets/mobile-banner/8.webp",
+				"/assets/mobile-banner/9.webp",
 			],
 		},
 		// 图片裁切焦点："top"、"center" 或 "bottom"。
@@ -81,7 +81,9 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 			// 仅在首页 Banner 中显示，标题与副标题会上下居中排列。
 			enable: true,
 			title: "somebodyX's Blog",
-			subtitle: [],
+			subtitle: [
+				"日常咕咕中...",
+			],
 			typewriter: {
 				// 副标题逐字显示；关闭后直接显示完整副标题。
 				enable: true,
@@ -103,7 +105,7 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 			// 交叉淡入淡出（Crossfade）过渡时长（毫秒，默认 1200ms）。
 			fadeDuration: 1200,
 			// 运镜呼吸动画模式："ken-burns"（默认，循环运镜）| "zoom-in"（推进）| "zoom-out"（拉远）| "pan-left"（左移）| "pan-right"（右移）| "none"（无运镜）。
-			animation: "none",
+			animation: "ken-burns",
 		},
 		waves: {
 			// 在 Banner 底部渲染页面背景色水波纹；关闭后不输出波浪 DOM。
@@ -125,7 +127,7 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 	},
 	favicon: [
 		// 浏览器标签页图标，路径相对于 public 目录。
-		{ src: "/logo/icon.webp" },
+		{ src: "/logo/qwq.webp" },
 	],
 });
 
