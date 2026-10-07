@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Sync Bangumi anime data
+        run: pnpm anime:sync --provider bangumi
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
