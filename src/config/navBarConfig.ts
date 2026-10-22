@@ -151,6 +151,7 @@ const defaultNavBarConfig: NavBarConfig = {
 				LinkPresets.Series,
 				LinkPresets.Moments,
 				LinkPresets.Albums,
+				LinkPresets.Friends,
 				LinkPresets.Compass,
 			],
 		},
